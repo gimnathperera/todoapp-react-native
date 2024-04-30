@@ -1,5 +1,6 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Board, BoardRepository } from "react-native-draganddrop-board";
+import styles from "./styles";
 
 const ToDoBoard = () => {
   const data = [
@@ -70,31 +71,16 @@ const ToDoBoard = () => {
   const boardRepository = new BoardRepository(data);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.boardContainer}>
       <Board
         boardRepository={boardRepository}
         open={() => {}}
         onDragEnd={() => {}}
+        boardBackground="#ffffff"
+        columnBorderRadius={24}
       />
     </View>
   );
 };
 
 export default ToDoBoard;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});

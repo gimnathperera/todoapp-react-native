@@ -5,6 +5,8 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import { HomeScreen } from "../screens";
+import NewTaskScreen from "../screens/NewTaskScreen";
+import { Screens } from "../constants/config";
 
 const Stack = createStackNavigator();
 
@@ -18,7 +20,8 @@ export const AppStack = () => {
           ...TransitionPresets.SlideFromRightIOS,
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name={Screens.HomeScreen} component={HomeScreen} />
+        <Stack.Screen name={Screens.NewTaskScreen} component={NewTaskScreen} />
       </Stack.Navigator>
     </SafeAreaView>
   );
@@ -29,6 +32,5 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    backgroundColor: "#281034",
   },
 });
