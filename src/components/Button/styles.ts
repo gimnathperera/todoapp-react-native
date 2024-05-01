@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     borderColor: "#3E2BCC",
     borderWidth: 1,
-    width: "100%",
   },
   buttonText: {
     color: "#3E2BCC",
+    textAlign: "center",
   },
 });
 

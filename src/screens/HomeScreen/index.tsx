@@ -17,9 +17,8 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>ToDo Board</Text>
-
       <ToDoBoard />
-      <View>
+      <View style={{ width: "100%", padding: 16 }}>
         <Button title="Create a New Task" onPress={handleOnCreateNewTask} />
       </View>
     </View>

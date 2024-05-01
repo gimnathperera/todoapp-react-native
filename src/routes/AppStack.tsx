@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import {
   createStackNavigator,
   TransitionPresets,
@@ -21,7 +21,15 @@ export const AppStack = () => {
         }}
       >
         <Stack.Screen name={Screens.HomeScreen} component={HomeScreen} />
-        <Stack.Screen name={Screens.NewTaskScreen} component={NewTaskScreen} />
+        <Stack.Screen
+          name={Screens.NewTaskScreen}
+          component={NewTaskScreen}
+          options={{
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTitle: () => <></>,
+          }}
+        />
       </Stack.Navigator>
     </SafeAreaView>
   );
