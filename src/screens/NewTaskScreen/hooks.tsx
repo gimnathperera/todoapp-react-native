@@ -3,6 +3,9 @@ import { UseFormReturn, useForm } from "react-hook-form";
 import { ToDo, todoSchema } from "./schema";
 import { Option } from "../../components/InputDropdown";
 import { useCreateTaskMutation } from "../../store/api/splits/tasks";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { Screens } from "../../constants/config";
 
 interface ReturnTypeLogic {
   forms: Record<
@@ -10,11 +13,15 @@ interface ReturnTypeLogic {
     { form: UseFormReturn<ToDo>; onSubmit: (data: ToDo) => void }
   >;
   derivedData: {
-    taskStatus: Option[];
+    taskStatuses: Option[];
+    isLoading: boolean;
   };
 }
 
 export const useLogic = (): ReturnTypeLogic => {
+  const navigation =
+    useNavigation<StackNavigationProp<ParamListBase, Screens>>();
+
   const todoForm = useForm({
     resolver: zodResolver(todoSchema),
     defaultValues: {
@@ -24,11 +31,15 @@ export const useLogic = (): ReturnTypeLogic => {
     } as ToDo,
   });
 
-  const [createNewTask] = useCreateTaskMutation();
+  const [createNewTask, { isLoading }] = useCreateTaskMutation();
 
   const handleOnToDoSubmit = async (data: ToDo): Promise<void> => {
     try {
       const result = await createNewTask(data);
+      if (result) {
+        todoForm.reset();
+        navigation.navigate(Screens.HomeScreen);
+      }
     } catch (error) {}
   };
 
@@ -46,7 +57,8 @@ export const useLogic = (): ReturnTypeLogic => {
   };
 
   const derivedData = {
-    taskStatus: TaskStatusOptions,
+    taskStatuses: TaskStatusOptions,
+    isLoading,
   };
 
   return {

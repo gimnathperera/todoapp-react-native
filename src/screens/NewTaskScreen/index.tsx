@@ -9,7 +9,7 @@ import { FormProvider } from "react-hook-form";
 const NewTaskScreen = () => {
   const {
     forms,
-    derivedData: { taskStatus },
+    derivedData: { taskStatuses, isLoading },
   } = useLogic();
 
   return (
@@ -31,12 +31,13 @@ const NewTaskScreen = () => {
           <InputDropdown
             placeholder="Task Status"
             name="status"
-            options={taskStatus}
+            options={taskStatuses}
           />
 
           <Button
             title="Add Task"
             onPress={forms.todoForm.form.handleSubmit(forms.todoForm.onSubmit)}
+            isLoading={isLoading}
           />
         </View>
       </FormProvider>
