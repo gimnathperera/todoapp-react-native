@@ -13,7 +13,6 @@ const HomeScreen = () => {
   } = useLogic();
 
   const data: Column[] = groupTasks(tasks);
-  console.log(">>===>> >>===>> data:", data);
 
   return (
     <View style={styles.container}>

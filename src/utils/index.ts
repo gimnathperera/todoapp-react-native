@@ -2,9 +2,9 @@ import { groupBy, omit, startCase } from "lodash-es";
 import { Column } from "../components/TodoBoard";
 import { Task } from "../types/task-types";
 
-function formatStatus(status: string): string {
+const formatStatus = (status: string): string => {
   return startCase(status.toLowerCase());
-}
+};
 
 export const groupTasks = (tasks: Task[]): Column[] => {
   const groupedTasks = groupBy(tasks, "status");

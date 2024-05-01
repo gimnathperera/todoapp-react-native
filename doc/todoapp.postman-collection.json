@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "46c92849-f10b-4e48-a996-24d5819517d9",
+		"name": "todoapp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15580341"
+	},
+	"item": [
+		{
+			"name": "GET todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6632480ac51e14d69563f435.mockapi.io/api/tasks",
+					"protocol": "https",
+					"host": [
+						"6632480ac51e14d69563f435",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST create todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"new task xD\",\n    \"description\": \"description number xD\",\n    \"status\": \"IN_PROGRESS\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6632480ac51e14d69563f435.mockapi.io/api/tasks",
+					"protocol": "https",
+					"host": [
+						"6632480ac51e14d69563f435",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update todo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"new task xD\"\n \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6632480ac51e14d69563f435.mockapi.io/api/tasks/1",
+					"protocol": "https",
+					"host": [
+						"6632480ac51e14d69563f435",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET get todo details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6632480ac51e14d69563f435.mockapi.io/api/tasks/2",
+					"protocol": "https",
+					"host": [
+						"6632480ac51e14d69563f435",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
