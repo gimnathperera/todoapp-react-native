@@ -29,9 +29,9 @@ To get a local copy up and running, follow these steps:
 2. Install the dependencies with `yarn install`.
 3. Start the development server with `yarn start`.
 
-## Running the tests
+## API doc
+`src/docs`: This directory contains postman json for the required APIs
 
-To run the tests, use the command `yarn test`.
 
 ## Built With
 
