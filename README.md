@@ -2,6 +2,13 @@
 
 This is a React Native application with TypeScript. The application is organized into several directories, each serving a specific purpose.
 
+
+## Screenshots
+<img width="467" alt="image" src="https://github.com/gimnathperera/todoapp-react-native/assets/55834384/b883e9b9-d16c-44b5-b2ad-404dd9a1d22e">
+<img width="467" alt="image" src="https://github.com/gimnathperera/todoapp-react-native/assets/55834384/8d10244e-910c-4774-bf47-1282e91433a4">
+<img width="423" alt="image" src="https://github.com/gimnathperera/todoapp-react-native/assets/55834384/620f0b68-9662-4aea-8e2e-d67a13cfe911">
+
+
 ## Directory Structure
 
 - `src/components`: This directory contains all the reusable components like Button, InputDropdown, InputTextfield, Loader, and TodoBoard.
@@ -30,7 +37,9 @@ To run the tests, use the command `yarn test`.
 
 - [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Redux](https://redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [RTK Queries](https://redux-toolkit.js.org/rtk-query/overview)
+- [React-navigation](https://reactnavigation.org/)
 
 ## Contributing
 
