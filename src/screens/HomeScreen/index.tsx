@@ -1,26 +1,33 @@
 import { Text, View } from "react-native";
-import styles from "./styles";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import ToDoBoard from "../../components/TodoBoard";
 import Button from "../../components/Button";
-import { Screens } from "../../constants/config";
+import ToDoBoard, { Column } from "../../components/TodoBoard";
+import { useLogic } from "./hooks";
+import styles from "./styles";
+import Loader from "../../components/Loader";
+import { groupTasks } from "../../utils";
 
 const HomeScreen = () => {
-  const navigation =
-    useNavigation<StackNavigationProp<ParamListBase, Screens>>();
+  const {
+    derivedData: { tasks, isTaskLoading },
+    handlers: { handleOnCreateNewTask },
+  } = useLogic();
 
-  const handleOnCreateNewTask = () => {
-    navigation.navigate(Screens.NewTaskScreen);
-  };
+  const data: Column[] = groupTasks(tasks);
+  console.log(">>===>> >>===>> data:", data);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ToDo Board</Text>
-      <ToDoBoard />
-      <View style={{ width: "100%", padding: 16 }}>
-        <Button title="Create a New Task" onPress={handleOnCreateNewTask} />
-      </View>
+      {isTaskLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Text style={styles.title}>ToDo Board</Text>
+          <ToDoBoard tasks={data ?? []} />
+          <View style={{ width: "100%", padding: 16 }}>
+            <Button title="Create a New Task" onPress={handleOnCreateNewTask} />
+          </View>
+        </>
+      )}
     </View>
   );
 };

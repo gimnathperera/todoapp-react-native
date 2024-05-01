@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UseFormReturn, useForm } from "react-hook-form";
 import { ToDo, todoSchema } from "./schema";
 import { Option } from "../../components/InputDropdown";
+import { useCreateTaskMutation } from "../../store/api/splits/tasks";
 
 interface ReturnTypeLogic {
   forms: Record<
@@ -23,9 +24,11 @@ export const useLogic = (): ReturnTypeLogic => {
     } as ToDo,
   });
 
+  const [createNewTask] = useCreateTaskMutation();
+
   const handleOnToDoSubmit = async (data: ToDo): Promise<void> => {
-    console.log("**************", data);
     try {
+      const result = await createNewTask(data);
     } catch (error) {}
   };
 

@@ -1,12 +1,12 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import {
-  createStackNavigator,
   TransitionPresets,
+  createStackNavigator,
 } from "@react-navigation/stack";
+import React from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { Screens } from "../constants/config";
 import { HomeScreen } from "../screens";
 import NewTaskScreen from "../screens/NewTaskScreen";
-import { Screens } from "../constants/config";
 
 const Stack = createStackNavigator();
 
