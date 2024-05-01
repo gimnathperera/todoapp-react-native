@@ -27,7 +27,7 @@ export const useLogic = (): ReturnTypeLogic => {
     defaultValues: {
       name: "",
       description: "",
-      status: "",
+      status: "TODO",
     } as ToDo,
   });
 
@@ -44,7 +44,7 @@ export const useLogic = (): ReturnTypeLogic => {
   };
 
   const TaskStatusOptions = [
-    { label: "ToDo", value: "TODO" },
+    { label: "To Do", value: "TODO" },
     { label: "In Progress", value: "IN_PROGRESS" },
     { label: "Done", value: "DONE" },
   ];
