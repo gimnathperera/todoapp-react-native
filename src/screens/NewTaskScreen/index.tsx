@@ -3,8 +3,15 @@ import Button from "../../components/Button";
 import InputDropdown from "../../components/InputDropdown";
 import InputTextfield from "../../components/InputTextfield";
 import styles from "./styles";
+import { useLogic } from "./hooks";
+import { FormProvider } from "react-hook-form";
 
 const NewTaskScreen = () => {
+  const {
+    forms,
+    derivedData: { taskStatus },
+  } = useLogic();
+
   return (
     <View style={styles.container}>
       <View>
@@ -17,13 +24,22 @@ const NewTaskScreen = () => {
           style={styles.image}
         />
       </View>
-      <View style={styles.formContainer}>
-        <InputTextfield placeholder="Task Name" />
-        <InputTextfield placeholder="Task Name" />
-        <InputDropdown placeholder="Task Status" />
+      <FormProvider {...forms.todoForm.form}>
+        <View style={styles.formContainer}>
+          <InputTextfield placeholder="Task Name" name="name" />
+          <InputTextfield placeholder="Task Description" name="description" />
+          <InputDropdown
+            placeholder="Task Status"
+            name="status"
+            options={taskStatus}
+          />
 
-        <Button title="Add Task" onPress={() => {}} />
-      </View>
+          <Button
+            title="Add Task"
+            onPress={forms.todoForm.form.handleSubmit(forms.todoForm.onSubmit)}
+          />
+        </View>
+      </FormProvider>
     </View>
   );
 };

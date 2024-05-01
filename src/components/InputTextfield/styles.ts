@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: "100%",
   },
+  errorText: {
+    color: "#cc0000",
+    fontSize: 12,
+    marginTop: 4,
+  },
 });
 
 export default styles;
