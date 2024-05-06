@@ -8,8 +8,12 @@ import { groupTasks } from "../../utils";
 
 const HomeScreen = () => {
   const {
-    derivedData: { tasks, isTaskLoading },
-    handlers: { handleOnCreateNewTask },
+    derivedData: { tasks, isTaskLoading, isModalUpdateVisible, selectedTaskId },
+    handlers: {
+      handleOnCreateNewTask,
+      handleOnClickUpdateTask,
+      handleOnUpdateModalVisibility,
+    },
   } = useLogic();
 
   const data: Column[] = groupTasks(tasks);
@@ -21,7 +25,13 @@ const HomeScreen = () => {
       ) : (
         <>
           <Text style={styles.title}>ToDo Board</Text>
-          <ToDoBoard tasks={data ?? []} />
+          <ToDoBoard
+            tasks={data ?? []}
+            handleOnClickUpdateTask={handleOnClickUpdateTask}
+            isModalUpdateVisible={isModalUpdateVisible}
+            selectedTaskId={selectedTaskId}
+            handleOnUpdateModalVisibility={handleOnUpdateModalVisibility}
+          />
           <View style={{ width: "100%", padding: 16 }}>
             <Button title="Create a New Task" onPress={handleOnCreateNewTask} />
           </View>

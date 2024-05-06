@@ -6,7 +6,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 16,
   },
-
+  formContainer: {
+    display: "flex",
+    paddingTop: 32,
+    gap: 16,
+  },
+  modalFormContainer: {
+    display: "flex",
+    paddingTop: 32,
+    gap: 16,
+    width: 275,
+  },
   title: {
     color: "#3E2BCC",
     fontSize: 32,

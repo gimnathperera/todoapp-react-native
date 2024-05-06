@@ -1,7 +1,11 @@
 import { Task } from "../../../../types/task-types";
 import { baseApi } from "../..";
-import { FetchTaskResponse } from "../../../../types/response-types";
+import {
+  FetchTaskDetailsResponse,
+  FetchTaskResponse,
+} from "../../../../types/response-types";
 import { Endpoints } from "../../endpoints";
+import { FetchTaskDetailsRequest } from "../../../../types/request-types";
 
 export const taskApi = baseApi.injectEndpoints({
   endpoints: (build) => {
@@ -14,10 +18,26 @@ export const taskApi = baseApi.injectEndpoints({
           return response;
         },
       }),
+      fetchTaskDetails: build.query<Task, FetchTaskDetailsRequest>({
+        query: ({ id }) => `${Endpoints.Tasks}/${id}`,
+        providesTags: [{ type: "Tasks" }],
+        transformResponse: (response: FetchTaskDetailsResponse) => {
+          if (!response) throw new Error("Invalid server response");
+          return response;
+        },
+      }),
       createTask: build.mutation<Task, Partial<Task>>({
         query: (task) => ({
           url: Endpoints.Tasks,
           method: "POST",
+          body: task,
+        }),
+        invalidatesTags: [{ type: "Tasks" }],
+      }),
+      updateTask: build.mutation<Task, Partial<Task>>({
+        query: (task) => ({
+          url: `${Endpoints.Tasks}/${task.id}`,
+          method: "PUT",
           body: task,
         }),
         invalidatesTags: [{ type: "Tasks" }],
@@ -28,4 +48,9 @@ export const taskApi = baseApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useLazyFetchTaskQuery, useCreateTaskMutation } = taskApi;
+export const {
+  useLazyFetchTaskQuery,
+  useLazyFetchTaskDetailsQuery,
+  useCreateTaskMutation,
+  useUpdateTaskMutation,
+} = taskApi;
